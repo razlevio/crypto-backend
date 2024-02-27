@@ -45,12 +45,12 @@ The application exposes several endpoints for interacting with cryptocurrency ra
 - **subscribeToCryptoRates**: Clients can subscribe to this event to receive real-time updates on cryptocurrency rates.
 - **broadcastUpdateSignal**: Broadcasts an update signal to all connected clients about new crypto rates.
 
-## Development
+### Development
 
 - To start the application in development mode, use `npm run start:dev`.
 - Ensure you have configured CORS paths properly in `main.ts` and `crypto.gateway.ts` for your development and production environments, instructions resides in the code as comments.
 
-## Deployment
+### Deployment
 
 - This application is container-ready. You can deploy it using Docker or to any cloud provider that supports Node.js applications, such as Vercel, Heroku, or AWS.
 - This application is kuberenets-ready. You have `k8s` folder with the deployment yaml scripts. You can deploy it to any kuberenets cluster cloud provider like Google Cloud Kuberenets Engine.
