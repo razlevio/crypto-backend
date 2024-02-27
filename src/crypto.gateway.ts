@@ -10,6 +10,9 @@ import { Socket } from 'socket.io';
 
 /**
  * WebSocket gateway for handling real-time cryptocurrency rate updates.
+ * For dev - use in cors-origin the host machine's IP address "http://localhost:3000"
+ * For prod - initially use the service name "http://crypto-frontend-service:3000"
+              after deploying the frontend service to the cluster, use the newley created frontend LoadBalancer service's IP address
  */
 @WebSocketGateway({
   cors: {
