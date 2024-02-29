@@ -35,8 +35,6 @@ This application is a Nest.js backend service designed to fetch, store, and dist
 
 The application exposes several endpoints for interacting with cryptocurrency rates and Redis data:
 
-- **POST `/set/:key`**: Store a value in Redis under a specified key.
-- **GET `/get/:key`**: Retrieve a value from Redis by its key.
 - **GET `/last`**: Fetch the last stored crypto rates from Redis. This endpoint is rate-limited to maximum of 30 calls per hour to prevent abuse.
 - **CRON `EVERY_10_MINUTES`**: Automatically fetches latest cryptocurrency rates from coinlayer api every 10 minutes and stores them in Redis that deployed in Upstash.
 
@@ -44,6 +42,7 @@ The application exposes several endpoints for interacting with cryptocurrency ra
 
 - **subscribeToCryptoRates**: Clients can subscribe to this event to receive real-time updates on cryptocurrency rates.
 - **broadcastUpdateSignal**: Broadcasts an update signal to all connected clients about new crypto rates.
+- **broadcastUpdatedCryptoData**: Brodcasts the updated crypto rates to all connected clients.
 
 ### Development
 
