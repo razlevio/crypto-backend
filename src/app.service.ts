@@ -53,6 +53,7 @@ export class AppService {
       await this.redisService.set('crypto_rates', storeData);
       this.logger.log('Crypto rates updated and stored in Redis');
       await this.cryptoGateway.broadcastUpdateSignal();
+      // await this.cryptoGateway.broadcastUpdatedCryptoData(); -> THIS IS IF WANT TO RETURN THE DATA INSEAD OF PING MSG
       this.logger.log('Crypto rates broadcasted to connected clients');
     } catch (error) {
       this.logger.error('Failed to fetch and store crypto rates', error.stack);

@@ -7,6 +7,8 @@ import {
 } from '@nestjs/websockets';
 import { Logger } from '@nestjs/common';
 import { Socket } from 'socket.io';
+import { RedisService } from './redis.service';
+import { Injectable } from '@nestjs/common';
 
 /**
  * WebSocket gateway for handling real-time cryptocurrency rate updates.
@@ -23,6 +25,7 @@ import { Socket } from 'socket.io';
 export class CryptoGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer() server: Socket;
   private logger: Logger = new Logger('CryptoGateway');
+  constructor(private readonly redisService: RedisService) {}
 
   /**
    * Handles WebSocket client connections.
@@ -65,5 +68,14 @@ export class CryptoGateway implements OnGatewayConnection, OnGatewayDisconnect {
   async broadcastUpdateSignal() {
     this.logger.log('Broadcasting update signal to all connected clients');
     this.server.emit('cryptoRatesUpdateSignal');
+  }
+
+  /**
+   * Retrieves the crypto rates from Redis.
+   * @returns Promise<string> - The crypto rates stored in Redis.
+   */
+  async broadcastUpdatedCryptoData(): Promise<string> {
+    const cryptoRates = await this.redisService.get('crypto_rates');
+    return cryptoRates;
   }
 }
