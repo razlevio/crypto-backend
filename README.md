@@ -19,7 +19,7 @@ This application is a Nest.js backend service designed to fetch, store, and dist
 
 - Node.js (version 14 or later)
 - Redis server
-- An API key from Coinlayer (or your preferred cryptocurrency rates provider)
+- An API key from Coinlayer
 
 ### Installation
 
